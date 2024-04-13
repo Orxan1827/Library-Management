@@ -2,6 +2,8 @@ package az.spring.bookstore.dto.request;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -9,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 public class BookAddToLibraryRequest {
 
-    private Long bookId;
+    private List<Long> bookId;
     private Long userId;
 
 }
