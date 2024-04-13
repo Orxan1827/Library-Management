@@ -1,0 +1,19 @@
+package az.spring.bookstore.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+public class GenericException extends RuntimeException {
+
+    private HttpStatus httpStatus;
+    private String errorCode;
+    private String errorMessage;
+
+}
