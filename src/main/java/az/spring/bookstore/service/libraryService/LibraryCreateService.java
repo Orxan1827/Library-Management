@@ -2,10 +2,8 @@ package az.spring.bookstore.service.libraryService;
 
 import az.spring.bookstore.dto.request.BookAddToLibraryRequest;
 import az.spring.bookstore.dto.request.LibraryCreateRequest;
-import az.spring.bookstore.entity.Book;
 import az.spring.bookstore.entity.Library;
 import az.spring.bookstore.entity.User;
-import az.spring.bookstore.exception.BookNotFoundException;
 import az.spring.bookstore.exception.GenericException;
 import az.spring.bookstore.repository.BookRepository;
 import az.spring.bookstore.repository.LibraryRepository;
@@ -57,17 +55,17 @@ public class LibraryCreateService {
     @Transactional
     public void addBookToLibrary(BookAddToLibraryRequest addToLibraryRequest) {
 
-        User user = readService.findUser(addToLibraryRequest.getUserId());
-        user.setFkBookId(addToLibraryRequest.getBookId());
-        Library library = libraryReadService.findLibrary(user.getFkLibraryId());
-        library.setFkBookId(addToLibraryRequest.getBookId());
-        userRepository.save(user);
-        libraryRepository.save(library);
-        Book book = bookRepository.findById(addToLibraryRequest.getBookId())
-                .orElseThrow(BookNotFoundException::new);
-        book.setFkLibraryId(user.getFkLibraryId());
-        book.setFkUserId(addToLibraryRequest.getUserId());
-        bookRepository.save(book);
+//        User user = readService.findUser(addToLibraryRequest.getUserId());
+//        user.get
+//        Library library = libraryReadService.findLibrary(user.getFkLibraryId());
+//        library.setFkBookId(addToLibraryRequest.getBookId());
+//        userRepository.save(user);
+//        libraryRepository.save(library);
+//        Book book = bookRepository.findById(addToLibraryRequest.getBookId())
+//                .orElseThrow(BookNotFoundException::new);
+//        book.setFkLibraryId(user.getFkLibraryId());
+//        book.setFkUserId(addToLibraryRequest.getUserId());
+//        bookRepository.save(book);
 
     }
 
