@@ -1,4 +1,4 @@
-package az.spring.bookstore.dto.response;
+package az.spring.bookstore.dto.response.user;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateResponse {
+public class UserCreateResponse {
 
     private Long id;
     private String username;

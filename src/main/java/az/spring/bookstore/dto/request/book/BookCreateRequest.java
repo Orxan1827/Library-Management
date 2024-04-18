@@ -1,10 +1,10 @@
-package az.spring.bookstore.dto.request;
+package az.spring.bookstore.dto.request.book;
 
-import az.spring.bookstore.entity.User;
-import az.spring.bookstore.enums.BookStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -13,13 +13,13 @@ import lombok.*;
 @NoArgsConstructor
 public class BookCreateRequest {
 
-//    @NotNull
-//    private Long userId;
-//
-//    @NotNull
-//    private Long libraryId;
-
     @NotBlank
     private String name;
+
+    @NotBlank
+    private String author;
+
+    @NotNull
+    private BigDecimal price;
 
 }

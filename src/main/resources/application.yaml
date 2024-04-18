@@ -2,6 +2,10 @@ server:
   port: 8585
 
 spring:
+
+  application:
+    name: Book-Store
+
   datasource:
     url: jdbc:postgresql://localhost:5432/book-store?createDatabaseIfNotExist=true
     username: postgres
@@ -12,4 +16,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+
+
 

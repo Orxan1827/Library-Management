@@ -1,6 +1,5 @@
-package az.spring.bookstore.dto.request;
+package az.spring.bookstore.dto.response.user;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -8,18 +7,11 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateRequest {
+public class UserUpdateResponse {
 
-    @NotBlank
     private Long id;
-
-    @NotBlank
     private String username;
-
-    @NotBlank
     private String password;
-
-    @NotBlank
     private String email;
 
 }

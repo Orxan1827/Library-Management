@@ -1,17 +1,21 @@
-package az.spring.bookstore.dto.response;
+package az.spring.bookstore.dto.response.library;
 
-import az.spring.bookstore.enums.BookStatus;
 import lombok.*;
 
-@Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookReadResponse {
+public class LibraryCreateResponse {
 
     private Long id;
+
     private String name;
+
+    private Long fkBookId;
+
+    private Long fkUserId;
+
     private String status;
 
 }

@@ -1,9 +1,9 @@
 package az.spring.bookstore.mapper;
 
-import az.spring.bookstore.dto.request.UserCreateRequest;
-import az.spring.bookstore.dto.response.UserCreateResponse;
-import az.spring.bookstore.dto.response.UserReadResponse;
-import az.spring.bookstore.dto.response.UserUpdateResponse;
+import az.spring.bookstore.dto.request.user.UserCreateRequest;
+import az.spring.bookstore.dto.response.user.UserCreateResponse;
+import az.spring.bookstore.dto.response.user.UserReadResponse;
+import az.spring.bookstore.dto.response.user.UserUpdateResponse;
 import az.spring.bookstore.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

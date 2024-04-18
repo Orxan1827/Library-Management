@@ -1,7 +1,7 @@
 package az.spring.bookstore.service.userService;
 
-import az.spring.bookstore.dto.request.UserUpdateRequest;
-import az.spring.bookstore.dto.response.UserUpdateResponse;
+import az.spring.bookstore.dto.request.user.UserUpdateRequest;
+import az.spring.bookstore.dto.response.user.UserUpdateResponse;
 import az.spring.bookstore.entity.User;
 import az.spring.bookstore.exception.UserNotFoundException;
 import az.spring.bookstore.mapper.UserMapper;
@@ -29,7 +29,6 @@ public class UserUpdateService {
             user.setPassword(updateRequest.getPassword());
         log.info("User has been updated {}",user);
         return userMapper.mapUserToUpdatedResponse(user);
-
     }
 
 }

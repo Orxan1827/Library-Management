@@ -1,4 +1,4 @@
-package az.spring.bookstore.dto.response;
+package az.spring.bookstore.dto.response.user;
 
 import lombok.*;
 
@@ -13,5 +13,6 @@ public class UserReadResponse {
     private String username;
     private String password;
     private String email;
+    private Long fkLibraryId;
 
 }

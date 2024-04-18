@@ -1,4 +1,4 @@
-package az.spring.bookstore.dto.request;
+package az.spring.bookstore.dto.request.user;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;

@@ -1,4 +1,4 @@
-package az.spring.bookstore.dto.request;
+package az.spring.bookstore.dto.request.library;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -8,8 +8,9 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookReadRequest {
+public class LibraryDeleteRequest {
 
     @NotNull
     private Long libraryId;
+
 }

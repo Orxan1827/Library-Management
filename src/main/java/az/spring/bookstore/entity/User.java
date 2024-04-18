@@ -25,13 +25,6 @@ public class User {
 
     private Long fkLibraryId;
 
-    @ElementCollection
-    private List<Long> fkBookId;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Library library;
-
-    @OneToMany(mappedBy = "user")
-    private List<Book> books;
+    private Long fkBookId;
 
 }

@@ -2,8 +2,6 @@ package az.spring.bookstore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CollectionId;
-
 import java.util.List;
 
 @Table(name = "library")
@@ -19,16 +17,24 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    private List<Long> fkBookId;
+    private String name;
+
+    private Long fkBookId;
 
     private Long fkUserId;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String status;
 
-    @OneToMany(mappedBy = "library")
-    private List<Book> books;
+
+    @Column(nullable = false, unique = true)
+    @ElementCollection
+    private List<Long> fkBookIds;
+
+    @PrePersist
+    public void saveStatus() {
+        if (status == null) {
+            status = "C";
+        }
+    }
 
 }
