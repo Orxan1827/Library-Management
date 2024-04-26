@@ -30,8 +30,4 @@ public class LibraryReadAllService {
         return libraryRepository.findByLibraryStatusA();
     }
 
-    public List<LibraryWrapper> findAllByFkBookId(LibraryReadBookIdRequest readBookIdRequest) {
-        return libraryRepository.findAllByFkBookId(readBookIdRequest.getFkBookId());
-    }
-
 }

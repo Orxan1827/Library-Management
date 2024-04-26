@@ -50,12 +50,12 @@ public class BookController {
     }
 
     @PostMapping("/readDetails")
-    public ResponseEntity<BookReadDetailsResponse> getBookDetails(@Valid @RequestBody BookReadRequest readRequest) {
+    public ResponseEntity<BookReadResponse> getBookDetails(@Valid @RequestBody BookReadRequest readRequest) {
         return ResponseEntity.status(OK).body(readService.getBookDetails(readRequest));
     }
 
     @PostMapping("/readAllDetails")
-    public ResponseEntity<BookReadDetailsResponse> getAllBookDetails(@Valid @RequestBody BookReadRequest readRequest) {
+    public ResponseEntity<BookReadResponse> getAllBookDetails(@Valid @RequestBody BookReadRequest readRequest) {
         return ResponseEntity.status(OK).body(readService.getBookDetails(readRequest));
     }
 

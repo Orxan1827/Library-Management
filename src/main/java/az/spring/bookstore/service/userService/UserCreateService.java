@@ -29,7 +29,7 @@ public class UserCreateService {
         return userMapper.mapUserToResponse(savedUser);
     }
 
-    protected void userCheck(String username) {
+    public void userCheck(String username) {
         var isAllReadyRegistered = userRepository.existsByUsername(username);
         if (isAllReadyRegistered) {
             throw GenericException.builder().httpStatus(FOUND).errorMessage("Username: " + username + " is already used").errorCode(FOUND.value()).build();

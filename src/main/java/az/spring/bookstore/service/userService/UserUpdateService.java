@@ -7,7 +7,11 @@ import az.spring.bookstore.exception.UserNotFoundException;
 import az.spring.bookstore.mapper.UserMapper;
 import az.spring.bookstore.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -28,7 +32,8 @@ public class UserUpdateService {
         if (updateRequest.getPassword() != null)
             user.setPassword(updateRequest.getPassword());
         log.info("User has been updated {}",user);
-        return userMapper.mapUserToUpdatedResponse(user);
+        User savedUser = userRepository.save(user);
+        return userMapper.mapUserToUpdatedResponse(savedUser);
     }
 
 }

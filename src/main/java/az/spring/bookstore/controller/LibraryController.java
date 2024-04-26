@@ -1,15 +1,13 @@
 package az.spring.bookstore.controller;
 
 import az.spring.bookstore.dto.request.book.BookAddToLibraryRequest;
+import az.spring.bookstore.dto.request.book.BookAddToStudentRequest;
 import az.spring.bookstore.dto.request.library.LibraryCreateRequest;
 import az.spring.bookstore.dto.request.library.LibraryDeleteRequest;
 import az.spring.bookstore.dto.request.library.LibraryReadBookIdRequest;
 import az.spring.bookstore.dto.request.library.LibraryUpdateRequest;
 import az.spring.bookstore.dto.response.library.LibraryCreateResponse;
-import az.spring.bookstore.service.libraryService.LibraryCreateService;
-import az.spring.bookstore.service.libraryService.LibraryDeleteService;
-import az.spring.bookstore.service.libraryService.LibraryReadAllService;
-import az.spring.bookstore.service.libraryService.LibraryUpdateService;
+import az.spring.bookstore.service.libraryService.*;
 import az.spring.bookstore.wrapper.LibraryWrapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,24 +32,26 @@ public class LibraryController {
 
     private final LibraryDeleteService deleteService;
 
+    private final LibraryAddService addService;
+
     @PostMapping("/create")
     public ResponseEntity<LibraryCreateResponse> createLibrary(@Valid @RequestBody LibraryCreateRequest createRequest) {
         return ResponseEntity.status(CREATED).body(createService.createLibrary(createRequest));
     }
 
     @PostMapping("/add")
-    public void addBookToLibrary(@RequestBody BookAddToLibraryRequest addToLibraryRequest) {
-        createService.addBookToLibrary(addToLibraryRequest);
+    public void addBookToLibrary(@Valid @RequestBody BookAddToLibraryRequest addToLibraryRequest) {
+        addService.addBookToLibrary(addToLibraryRequest);
+    }
+
+    @PostMapping("/addToStudent")
+    public void addBookToStudent(@Valid @RequestBody BookAddToStudentRequest addToStudentRequest) {
+        addService.addBookToStudentLibrary(addToStudentRequest);
     }
 
     @PostMapping("/readAllForStatus")
     public ResponseEntity<List<LibraryWrapper>> findByLibraryStatusA() {
         return ResponseEntity.status(OK).body(readAllService.findByLibraryStatusA());
-    }
-
-    @PostMapping("/readAllBookId")
-    public ResponseEntity<List<LibraryWrapper>> findAllByFkBookId(@Valid @RequestBody LibraryReadBookIdRequest readBookIdRequest) {
-        return ResponseEntity.status(OK).body(readAllService.findAllByFkBookId(readBookIdRequest));
     }
 
     @PostMapping("/update")

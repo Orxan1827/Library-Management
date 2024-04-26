@@ -19,8 +19,6 @@ public class BookReadAllService {
 
     private final BookRepository bookRepository;
 
-    private final LibraryReadService libraryReadService;
-
     private final BookMapper bookMapper;
 
     public List<BookReadResponse> getAllBooks() {
@@ -31,15 +29,8 @@ public class BookReadAllService {
 
     public List<BookReadResponse> getAllBooksFromLibrary(BookReadRequest readRequest) {
         return bookRepository.findAll().stream()
-                .filter(book -> readRequest.getLibraryId().equals(book.getFkLibraryId()))
+                .filter(book -> readRequest.getFkLibrarianLibraryId().equals(book.getFkLibrarianLibraryId()))
                 .map(bookMapper::mapBookReadResponse)
-                .collect(Collectors.toList());
-    }
-
-    public List<BookReadDetailsResponse> getAllBooksFromLibraryWithDetails(BookReadRequest readRequest) {
-        return bookRepository.findAll().stream()
-                .filter(book -> readRequest.getLibraryId().equals(book.getFkLibraryId()))
-                .map(BookReadDetailsResponse::mapBookToResponseDetails)
                 .collect(Collectors.toList());
     }
 

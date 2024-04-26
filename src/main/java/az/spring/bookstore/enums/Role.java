@@ -1,12 +1,10 @@
 package az.spring.bookstore.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Role {
 
-    ADMIN("ADMIN"), USER("USER");
+    ADMIN, STUDENT, LIBRARIAN;
 
-    private String value;
-
-    Role(String value) {
-        this.value = value;
-    }
 }

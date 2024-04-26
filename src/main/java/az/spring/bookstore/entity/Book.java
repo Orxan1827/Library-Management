@@ -17,17 +17,16 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String author;
-
     private BigDecimal price;
     private String status;
 
-    private Long fkLibraryId;
+    private Long fkStudentUserId;
+    private Long fkLibrarianUserId;
 
-    private Long fkUserId;
+    private Long fkLibrarianLibraryId;
+    private Long fkStudentLibraryId;
 
     @PrePersist
     public void saveStatus() {

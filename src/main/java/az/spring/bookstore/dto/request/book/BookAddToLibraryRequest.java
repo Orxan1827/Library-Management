@@ -11,9 +11,9 @@ import lombok.*;
 public class BookAddToLibraryRequest {
 
     @NotNull
-    private Long fkBookId;
+    private Long fkUserId;
 
     @NotNull
-    private Long fkUserId;
+    private Long fkBookId;
 
 }

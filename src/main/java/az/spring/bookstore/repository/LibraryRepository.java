@@ -17,13 +17,8 @@ public interface LibraryRepository extends JpaRepository<Library, Long> {
     Library findByNameOrFkUserIdAndStatusIn(String name, Long fkUserId, List<String> status);
 
     @Query(value = """
-             select new az.spring.bookstore.wrapper.LibraryWrapper(l.id,l.name,l.fkBookId,l.fkUserId,l.status) from Library l where l.status = 'A'
+             select new az.spring.bookstore.wrapper.LibraryWrapper(l.id,l.name,l.fkUserId,l.status) from Library l where l.status = 'A'
             """)
     List<LibraryWrapper> findByLibraryStatusA();
-
-    @Query(value = """
-             select new az.spring.bookstore.wrapper.LibraryWrapper(l.id,l.name,l.fkBookId,l.fkUserId,l.status) from Library l where l.fkBookId = :fkBookId
-            """)
-    List<LibraryWrapper> findAllByFkBookId(Long fkBookId);
 
 }

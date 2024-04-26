@@ -17,8 +17,10 @@ public class BookReadDetailsResponse {
     private String author;
     private String status;
     private BigDecimal price;
-    private Long fkLibraryId;
-    private Long fkUserId;
+    private Long fkLibrarianLibraryId;
+    private Long fkStudentLibraryId;
+    private Long fkLibrarianUserId;
+    private Long fkStudentUserId;
 
     public static BookReadDetailsResponse mapBookToResponseDetails(Book book) {
 
@@ -29,8 +31,10 @@ public class BookReadDetailsResponse {
                 .author(book.getAuthor())
                 .status(book.getStatus())
                 .price(book.getPrice())
-                .fkLibraryId(book.getFkLibraryId())
-                .fkUserId(book.getFkUserId())
+                .fkLibrarianLibraryId(book.getFkLibrarianLibraryId())
+                .fkStudentLibraryId(book.getFkStudentLibraryId())
+                .fkLibrarianUserId(book.getFkLibrarianUserId())
+                .fkStudentUserId(book.getFkStudentUserId())
                 .build();
     }
 

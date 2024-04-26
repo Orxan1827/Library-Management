@@ -16,19 +16,9 @@ public class Library {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
-    private Long fkBookId;
-
     private Long fkUserId;
-
     private String status;
-
-
-    @Column(nullable = false, unique = true)
-    @ElementCollection
-    private List<Long> fkBookIds;
 
     @PrePersist
     public void saveStatus() {

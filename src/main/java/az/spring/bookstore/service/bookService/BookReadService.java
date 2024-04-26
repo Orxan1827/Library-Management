@@ -18,15 +18,13 @@ public class BookReadService {
 
     private final BookMapper bookMapper;
 
-    public BookReadResponse getBook(Long id) {
-        return bookMapper.mapBookReadResponse(findBook(id));
+    public BookReadResponse getBookDetails(BookReadRequest readRequest) {
+        Book book = bookRepository.findBookByFkLibrarianLibraryId(readRequest.getFkLibrarianLibraryId())
+                .orElseThrow(BookNotFoundException::new);
+        return bookMapper.mapBookReadResponse(book);
     }
 
-    public BookReadDetailsResponse getBookDetails(BookReadRequest readRequest) {
-        return BookReadDetailsResponse.mapBookToResponseDetails(findBook(readRequest.getLibraryId()));
-    }
-
-    protected Book findBook(Long id) {
+    public Book findBook(Long id) {
         return bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
     }
 

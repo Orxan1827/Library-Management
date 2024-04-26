@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class LibraryReadResponse {
 
-    private Long id;
+    private Long libraryId;
 
     private String name;
 

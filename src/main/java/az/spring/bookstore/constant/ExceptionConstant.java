@@ -12,4 +12,6 @@ public class ExceptionConstant {
     public static final String USER_NOT_FOUND = "User not found with given id";
 
     public static final String BOOK_CHECK_MESSAGE = "Number of book purchases is limited";
+
+    public static final String BOOK_ORDER_EXCEPTION = "The order has been canceled because the book is not yet active";
 }

@@ -16,10 +16,19 @@ public class BookUpdateRequest {
     @NotNull
     private Long id;
 
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String author;
+
     @NotNull
     private String status;
 
     @NotNull
     private BigDecimal price;
+
+    @NotNull
+    private Long userId;
 
 }

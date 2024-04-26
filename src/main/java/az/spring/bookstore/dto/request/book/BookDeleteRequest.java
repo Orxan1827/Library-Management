@@ -13,4 +13,7 @@ public class BookDeleteRequest {
     @NotNull
     private Long bookId;
 
+    @NotNull
+    private Long userId;
+
 }

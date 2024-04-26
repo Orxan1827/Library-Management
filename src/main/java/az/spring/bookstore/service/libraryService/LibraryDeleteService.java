@@ -16,7 +16,7 @@ public class LibraryDeleteService {
     private final LibraryReadService readService;
 
     public void deleteLibrary(LibraryDeleteRequest deleteRequest) {
-        libraryRepository.save(readService.findLibrary(deleteRequest.getLibraryId()));
+        libraryRepository.delete(readService.findLibrary(deleteRequest.getLibraryId()));
         log.info("Library is deleted");
     }
 

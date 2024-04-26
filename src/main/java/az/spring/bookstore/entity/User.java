@@ -1,9 +1,8 @@
 package az.spring.bookstore.entity;
 
+import az.spring.bookstore.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Table(name = "users")
 @Entity
@@ -18,13 +17,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", unique = true)
+    @Column(unique = true)
     private String username;
     private String password;
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private Long fkLibraryId;
-
-    private Long fkBookId;
 
 }
