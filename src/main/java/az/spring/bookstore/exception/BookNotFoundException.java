@@ -1,11 +1,13 @@
 package az.spring.bookstore.exception;
 
-import static az.spring.bookstore.enums.ExceptionConstant.BOOK_NOT_FOUND;
+import org.springframework.http.HttpStatus;
+
+import static az.spring.bookstore.constant.ExceptionConstant.BOOK_NOT_FOUND;
 
 public class BookNotFoundException extends GenericException{
 
     public BookNotFoundException() {
-        super(BOOK_NOT_FOUND.getStatus(), BOOK_NOT_FOUND.getCode(),BOOK_NOT_FOUND.getMessage());
+        super(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(), BOOK_NOT_FOUND);
     }
 
 }

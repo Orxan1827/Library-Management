@@ -1,10 +1,8 @@
 package az.spring.bookstore.exception.handler;
 
 import az.spring.bookstore.exception.GenericException;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
+import az.spring.bookstore.exception.UnauthorizedAccessException;
+import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -54,7 +52,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         errors.put("errorCode", status.value());
         errors.put("httpStatus", status);
         return ResponseEntity.status(status).body(errors);
-
     }
 
     @Override
@@ -67,17 +64,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         errors.put("errorCode", status.value());
         errors.put("httpStatus", status);
         return ResponseEntity.status(status).body(errors);
-
     }
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
+        ex.getBindingResult()
+                .getFieldErrors()
+                .forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
         return ResponseEntity.badRequest()
                 .body(errors);
-
     }
 
     @ExceptionHandler(GenericException.class)
@@ -85,12 +82,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         Map<String, Object> errors = new HashMap<>();
         errors.put("message", ex.getErrorMessage());
-        errors.put("errorCode", ex.getErrorCode());
+        errors.put("errorCode", ex.getHttpStatus().value());
         errors.put("HttpStatus", ex.getHttpStatus());
         return ResponseEntity
                 .status(ex.getHttpStatus() != null ? ex.getHttpStatus() : HttpStatus.BAD_REQUEST)
                 .body(errors);
+//        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND,ex.getMessage());
+    }
 
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ProblemDetail handleUnauthorizedAccessException(UnauthorizedAccessException ex){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.getMessage());
     }
 
 }

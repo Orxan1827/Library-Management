@@ -1,8 +1,8 @@
 package az.spring.bookstore.service.bookService;
 
-import az.spring.bookstore.dto.request.BookReadRequest;
-import az.spring.bookstore.dto.response.BookReadResponse;
-import az.spring.bookstore.entity.Library;
+import az.spring.bookstore.dto.request.book.BookReadRequest;
+import az.spring.bookstore.dto.response.book.BookReadDetailsResponse;
+import az.spring.bookstore.dto.response.book.BookReadResponse;
 import az.spring.bookstore.mapper.BookMapper;
 import az.spring.bookstore.repository.BookRepository;
 import az.spring.bookstore.service.libraryService.LibraryReadService;
@@ -19,8 +19,6 @@ public class BookReadAllService {
 
     private final BookRepository bookRepository;
 
-    private final LibraryReadService libraryReadService;
-
     private final BookMapper bookMapper;
 
     public List<BookReadResponse> getAllBooks() {
@@ -31,20 +29,13 @@ public class BookReadAllService {
 
     public List<BookReadResponse> getAllBooksFromLibrary(BookReadRequest readRequest) {
         return bookRepository.findAll().stream()
-                .filter(book -> book.getLibrary().getId().equals(readRequest.getLibraryId()))
+                .filter(book -> readRequest.getFkLibrarianLibraryId().equals(book.getFkLibrarianLibraryId()))
                 .map(bookMapper::mapBookReadResponse)
                 .collect(Collectors.toList());
-
-    }
-
-    public List<BookReadResponse> getAllBooksForLibrary(BookReadRequest readRequest) {
-        Library library = libraryReadService.findLibrary(readRequest.getLibraryId());
-        return library.getBooks().stream()
-                .map(bookMapper::mapBookReadResponse)
-                .toList();
     }
 
     public List<BookWrapper> findByBookStatusA() {
         return bookRepository.findByBookStatusA();
     }
+
 }

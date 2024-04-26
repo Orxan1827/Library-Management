@@ -15,7 +15,7 @@ public class UserLoginService {
     public String login(String username, String password) {
        User foundedUser = userRepository.findUserByUsername(username).orElseThrow(UserNotFoundException::new);
        if (foundedUser.getPassword().equals(password)){
-           return "User login successfully";
+           return "User login successfully!";
        }
         return "Invalid username or password";
     }

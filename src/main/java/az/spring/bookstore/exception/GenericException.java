@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 public class GenericException extends RuntimeException {
 
     private HttpStatus httpStatus;
-    private String errorCode;
+    private Integer errorCode;
     private String errorMessage;
 
 }

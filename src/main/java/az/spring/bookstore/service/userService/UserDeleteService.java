@@ -1,6 +1,6 @@
 package az.spring.bookstore.service.userService;
 
-import az.spring.bookstore.dto.request.UserDeleteRequest;
+import az.spring.bookstore.dto.request.user.UserDeleteRequest;
 import az.spring.bookstore.entity.User;
 import az.spring.bookstore.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,4 +18,5 @@ public class UserDeleteService {
         User user = userReadService.findUser(deleteRequest.getId());
         userRepository.delete(user);
     }
+
 }

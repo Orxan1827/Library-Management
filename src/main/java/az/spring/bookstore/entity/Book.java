@@ -3,6 +3,8 @@ package az.spring.bookstore.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Table(name = "books")
 @Entity
 @Getter
@@ -16,22 +18,18 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String author;
+    private BigDecimal price;
     private String status;
 
-    private Long fkLibraryId;
+    private Long fkStudentUserId;
+    private Long fkLibrarianUserId;
 
-    private Long fkUserId;
-
-    @ManyToOne
-    @JoinColumn(name = "library_id")
-    private Library library;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long fkLibrarianLibraryId;
+    private Long fkStudentLibraryId;
 
     @PrePersist
-    public void status() {
+    public void saveStatus() {
         if (status == null) {
             status = "C";
         }

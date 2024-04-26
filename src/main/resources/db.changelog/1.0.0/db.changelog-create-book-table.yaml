@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 25.04.2024
+      author: Orxan Rustamov
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: author
+                  type: varchar(255)
+              - column:
+                  name: price
+                  type: numeric
+                  defaultValueNumeric: 0
+              - column:
+                  name: status
+                  type: varchar(255)
+              - column:
+                  name: fk_student_user_id
+                  type: bigint
+              - column:
+                  name: fk_librarian_user_id
+                  type: bigint
+              - column:
+                  name: fk_librarian_library_id
+                  type: bigint
+              - column:
+                  name: fk_student_library_id
+                  type: bigint
+
